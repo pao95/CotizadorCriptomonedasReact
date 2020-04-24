@@ -1,24 +1,24 @@
 import React, {Fragment, useState} from 'react';
 
-const useMoneda = (label, stateInicial, opciones) =>{
+const useCriptomoneda = (label, stateInicial, opciones) =>{
 
     const [state, actualizarState] = useState(stateInicial);
-    const Seleccionar = () => (
+    const SelectCripto = () => (
             <Fragment>
                 <label>{label}
                 </label>
                 <select className="form-control" onChange={ e=> actualizarState(e.target.value)} value={state}>
                     <option value=" ">-Seleccione-</option>
                     {opciones.map(opcion => (
-                        <option key={opcion.codigo} value ={opcion.codigo}>
-                            {opcion.nombre}
+                        <option key={opcion.CoinInfo.Id} value ={opcion.CoinInfo.Name}>
+                            {opcion.CoinInfo.Name}
                         </option>
                     ))}
                 </select>
             </Fragment>
     );
 
-    return[state, Seleccionar, actualizarState];
+    return[state, SelectCripto, actualizarState];
 }
 
-export default useMoneda;
+export default useCriptomoneda;
